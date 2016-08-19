@@ -1,0 +1,9 @@
+# for production deployment
+# Supposed To Be Modified
+
+# for connecting mongodb
+mongo:
+  uri: 'mongodb://<user>:<pass>@127.0.0.1/<db>'
+  options: 
+    autoIndex: false
+  debug: false

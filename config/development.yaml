@@ -1,0 +1,8 @@
+# during local development
+
+# for connecting mongodb
+mongo:
+  uri: 'mongodb://127.0.0.1/test'
+  options: 
+    autoIndex: false
+  debug: true
