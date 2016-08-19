@@ -22,6 +22,7 @@ coverage
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
+.tmp
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
@@ -42,3 +43,7 @@ node_modules
 
 # Runtime configuration for swagger app
 config/runtime.yaml
+
+# SPA
+public
+bower_components
