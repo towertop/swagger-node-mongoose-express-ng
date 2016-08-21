@@ -1,8 +1,10 @@
 'use strict';
+/*jshint node:true, globalstrict:true*/
 
 var nodeConfig = require('config');
 
-module.exports = function create(fittingDef, bagpipes) {
+// module.exports = function create(fittingDef, bagpipes) {
+module.exports = function create() {
    
   if (!nodeConfig.mongooseModels) {
     throw new Error('Failed to put req.mongooseModels');
@@ -12,5 +14,5 @@ module.exports = function create(fittingDef, bagpipes) {
     context.request.mongooseModels = nodeConfig.mongooseModels;
 
     next();
-  }
+  };
 };
