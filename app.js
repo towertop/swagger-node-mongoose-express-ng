@@ -85,10 +85,22 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   var port = process.env.PORT || 10010;
   app.listen(port);
 
-  if (swaggerExpress.runner.swagger.paths['/hello']) {
-    console.log('try this:\ncurl http://127.0.0.1:' + port + '/hello?name=Scott');
-  }
+  // if (swaggerExpress.runner.swagger.paths['/hello']) {
+  //   console.log('try this:\ncurl http://127.0.0.1:' + port + '/hello?name=Scott');
+  // }
+  console.log('API: http://127.0.0.1:' + port + '/api');
+  console.log('SPAs: http://127.0.0.1:' + port + '/app');
+  console.log('Enjoy and good luck ~');
 });
+
+/*
+  SPA
+*/
+app.use('/app', express.static(__dirname + '/public'));
+if (nodeConfig.util.getEnv('NODE_ENV') === 'development') {
+  // console.log('Setup /bower_components for local development');
+  app.use('/bower_components', express.static(__dirname + '/bower_components'));
+}
 
 /*
   API Development

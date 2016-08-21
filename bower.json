@@ -1,0 +1,23 @@
+{
+  "name": "swagger-node-mongoose-express-ng",
+  "description": "New Swagger API Project",
+  "authors": [
+    "towertop <towertop.cn@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "api",
+    "config",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.1.0"
+  }
+}
