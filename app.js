@@ -1,4 +1,5 @@
 'use strict';
+/*jshint node:true, globalstrict:true*/
 
 /*
   Execution
@@ -10,10 +11,11 @@ var fs = require('fs');
 
 var mongoose = require('mongoose');
 var yaml = require('js-yaml');
-var swaggerMongoose = require('swagger-mongoose');
+var swaggerMongoose = require('swagger-mongoose-fork');
 
 var SwaggerExpress = require('swagger-express-mw');
-var app = require('express')();
+var express = require('express');
+var app = express();
 module.exports = app; // for testing
 
 var config = {
@@ -46,6 +48,7 @@ var nodeConfig = require('config');
 mongoose.connect(nodeConfig.mongo.uri, nodeConfig.mongo.options, function (err) {
   // Log Error
   if (err) {
+    console.log('Failed connecting mongodb, did you run it at the location specified in development.yaml or production.yaml?');
     throw err;
   } else {
     // Enabling mongoose debug mode if required
@@ -60,6 +63,8 @@ mongoose.connect(nodeConfig.mongo.uri, nodeConfig.mongo.options, function (err) 
   How to 
 */
 // #Caveat: Keep hardcoded location of swagger api spec here.
+// #Caveat: The deprecated promise warning does block save(). See http://mongoosejs.com/docs/promises.html
+mongoose.Promise = global.Promise;
 var swaggerFile = config.swaggerFile || path.resolve(config.appRoot, 'api/swagger/swagger.yaml');
 var swaggerString = fs.readFileSync(swaggerFile, 'utf8');
 // #Caveat: Used in api/fittings/swagger_mongoose.js , forwared to req.mongooseModels . Thanks to node-config!
